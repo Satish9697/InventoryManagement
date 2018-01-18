@@ -1,6 +1,7 @@
 package com.demo;
 
 import com.demo.Utility.CommandUtility;
+import com.demo.Utility.PrintUtility;
 import com.sun.xml.internal.ws.util.StringUtils;
 
 import java.util.ArrayList;
@@ -18,7 +19,6 @@ public class App
     public static void main( String[] args )
     {
         CommandUtility commandUtility = new CommandUtility();
-        System.out.println( "Hello World!" );
         Scanner console = new Scanner(System.in);
         String temp;
         List<String> commands=new ArrayList<String>();
@@ -31,8 +31,7 @@ public class App
                 commands.add(temp);
             }
         }
-//        for(int i=0;i<commands.size();i++)
-//            System.out.println(commands.get(i));
+
         commandUtility.processCommand(commands);
     }
 

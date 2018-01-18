@@ -1,18 +1,16 @@
 package com.demo.Repository;
 
 import com.demo.Model.Inventory;
+import com.demo.Model.Report;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by gsati on 1/17/2018.
  */
 public class InventoryRepo {
 
-    Set<Inventory> inventories=new HashSet<Inventory>();
+    Set<Inventory> inventories=new TreeSet<Inventory>();
     // create a inventory
     public void addInventory(Inventory inv){
         inventories.add(inv);
@@ -27,6 +25,7 @@ public class InventoryRepo {
         for(Inventory inv : inventories){
             System.out.println(inv);
         }
+        System.out.println("profit from previous report "+ Report.profit);
     }
     public void delete(Inventory inv){
         inventories.remove(inv);

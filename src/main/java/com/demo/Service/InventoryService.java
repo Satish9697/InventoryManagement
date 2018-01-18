@@ -1,13 +1,18 @@
 package com.demo.Service;
 
 import com.demo.Model.Inventory;
+import com.demo.Model.Report;
 import com.demo.Repository.InventoryRepo;
+import com.demo.Utility.PrintUtility;
+
+import java.util.Set;
 
 /**
  * Created by gsati on 1/17/2018.
  */
 public class InventoryService {
     InventoryRepo repo=new InventoryRepo();
+    PrintUtility printUtility=new PrintUtility();
 
     public void addInventory(String itemName, String sellingPrice, String buyPrice) {
 
@@ -26,6 +31,8 @@ public class InventoryService {
     public void updateSellInventory(String itemName, int quantity){
 
         Inventory inv =repo.getInventoryByName(itemName);
+        //update profit
+        Report.profit+=(inv.getSellingPrice()-inv.getBuyPrice())*quantity;
         quantity=inv.getQuantity()-quantity;
         inv.setQuantity(quantity);
         repo.updateInventory(inv);
@@ -42,11 +49,18 @@ public class InventoryService {
     }
 
     public void report() {
-        repo.printInv();
+
+        //print inventory
+        Set<Inventory> inventories=repo.getAllInventories();
+        printUtility.printReport(inventories);
+        //reset profit
+        Report.profit=0;
     }
 
     public void delete(String itemName) {
         Inventory inv = repo.getInventoryByName(itemName);
+        //update profit
+        Report.profit-=inv.getBuyPrice()*inv.getQuantity();
         repo.delete(inv);
     }
 }

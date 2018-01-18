@@ -3,7 +3,7 @@ package com.demo.Model;
 /**
  * Created by gsati on 1/17/2018.
  */
-public class Inventory {
+public class Inventory implements  Comparable<Inventory> {
     String itemName;
     double sellingPrice;
     double buyPrice;
@@ -13,7 +13,7 @@ public class Inventory {
     }
 
 
-    public Inventory(String itemName, double sellingPrice, double buyPrice, int quantity) {
+    public Inventory(String itemName, double buyPrice,double sellingPrice, int quantity) {
         this.itemName = itemName;
         this.sellingPrice = sellingPrice;
         this.buyPrice = buyPrice;
@@ -72,5 +72,10 @@ public class Inventory {
                 ", buyPrice=" + buyPrice +
                 ", quantity=" + quantity +
                 '}';
+    }
+
+    public int compareTo(Inventory o) {
+
+        return this.getItemName().compareTo(o.getItemName());
     }
 }
