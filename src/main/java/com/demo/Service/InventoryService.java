@@ -46,7 +46,7 @@ public class InventoryService {
                 return false;
             }
             else {
-                Report.profit += (inv.getSellingPrice() - inv.getBuyPrice()) * quantity;
+                Report.profit += (inv.getSellingPrice() - inv.getBuyPrice()) * (inv.getQuantity()-quantity);
                 inv.setQuantity(quantity);
                 repo.updateInventory(inv);
                 return true;
