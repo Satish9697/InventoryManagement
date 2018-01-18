@@ -10,25 +10,35 @@ import java.util.*;
  */
 public class InventoryRepo {
 
-    Set<Inventory> inventories=new TreeSet<Inventory>();
+    private static Set<Inventory> inventories=new TreeSet<Inventory>();
     // create a inventory
-    public void addInventory(Inventory inv){
-        inventories.add(inv);
+    public boolean addInventory(Inventory inv){
+
+        if(inv == null || inv.getItemName()==null)
+            return false;
+        else {
+            inventories.add(inv);
+            return true;
+        }
     }
     //update a inventory
-    public void updateInventory(Inventory inv){
+    public boolean updateInventory(Inventory inv){
 
-        inventories.remove(inv);
-        inventories.add(inv);
+        if(!delete(inv))
+            return false;
+        if(!addInventory(inv))
+            return false;
+        return true;
     }
-    public void printInv(){
-        for(Inventory inv : inventories){
-            System.out.println(inv);
+    public boolean delete(Inventory inv){
+
+        if(inv == null)
+            return false;
+        else {
+            inventories.remove(inv);
+            return true;
         }
-        System.out.println("profit from previous report "+ Report.profit);
-    }
-    public void delete(Inventory inv){
-        inventories.remove(inv);
+
     }
 
     public Set<Inventory> getAllInventories(){

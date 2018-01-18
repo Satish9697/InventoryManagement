@@ -75,7 +75,6 @@ public class Inventory implements  Comparable<Inventory> {
     }
 
     public int compareTo(Inventory o) {
-
         return this.getItemName().compareTo(o.getItemName());
     }
 }

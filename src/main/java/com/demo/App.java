@@ -1,11 +1,6 @@
 package com.demo;
 
 import com.demo.Utility.CommandUtility;
-import com.demo.Utility.PrintUtility;
-import com.sun.xml.internal.ws.util.StringUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -20,19 +15,16 @@ public class App
     {
         CommandUtility commandUtility = new CommandUtility();
         Scanner console = new Scanner(System.in);
-        String temp;
-        List<String> commands=new ArrayList<String>();
+        String command;
         System.out.println("Enter Input");
         while (true){
-            temp = console.nextLine();
-            if(temp.equals("#"))
+            command = console.nextLine();
+            if(command.equals("#"))
                 break;
             else {
-                commands.add(temp);
+                commandUtility.processCommand(command);
             }
         }
-
-        commandUtility.processCommand(commands);
     }
 
 }
