@@ -9,7 +9,7 @@ public class Inventory {
     double buyPrice;
     int quantity;
 
-    public Inventory() {
+    public Inventory(String token, String s) {
     }
 
 
@@ -47,5 +47,30 @@ public class Inventory {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Inventory inventory = (Inventory) o;
+
+        return itemName.equals(inventory.itemName);
+    }
+
+    @Override
+    public int hashCode() {
+        return itemName.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+                "itemName='" + itemName + '\'' +
+                ", sellingPrice=" + sellingPrice +
+                ", buyPrice=" + buyPrice +
+                ", quantity=" + quantity +
+                '}';
     }
 }
