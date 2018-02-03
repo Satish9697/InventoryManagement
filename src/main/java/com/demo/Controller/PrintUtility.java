@@ -1,4 +1,4 @@
-package com.demo.Utility;
+package com.demo.Controller;
 
 import com.demo.Model.Inventory;
 import com.demo.Model.Report;

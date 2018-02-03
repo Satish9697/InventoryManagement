@@ -1,6 +1,8 @@
 package com.demo;
 
-import com.demo.Utility.CommandUtility;
+import com.demo.Controller.CommandUtility;
+
+
 import java.util.Scanner;
 
 /**
@@ -15,7 +17,7 @@ public class App
     {
         CommandUtility commandUtility = new CommandUtility();
         Scanner console = new Scanner(System.in);
-        String command;
+        String command = null;
         System.out.println("Enter Input");
         while (true){
             command = console.nextLine();

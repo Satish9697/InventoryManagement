@@ -1,10 +1,6 @@
-package com.demo.Utility;
+package com.demo.Controller;
 
-import com.demo.Model.Inventory;
-import com.demo.Repository.InventoryRepo;
 import com.demo.Service.InventoryService;
-
-import java.util.List;
 
 /**
  * Created by gsati on 1/17/2018.
@@ -46,6 +42,14 @@ public class CommandUtility {
             }
             else
                 System.out.println("updatesell inventory failed");
+        }
+        else if(tokens[0].equals("updatesellprice")){
+            if(tokens.length==3){
+                if(!inventoryService.updateSellPriceInventory(tokens[1],tokens[2]))
+                    System.out.println("UpdatedSellPrice inventory failed");
+            }
+            else
+                System.out.println("updatesellprice inventory failed");
         }
         else if(tokens[0].equals("report")){
             if(!inventoryService.report())

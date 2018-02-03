@@ -3,7 +3,7 @@ package com.demo.Service;
 import com.demo.Model.Inventory;
 import com.demo.Model.Report;
 import com.demo.Repository.InventoryRepo;
-import com.demo.Utility.PrintUtility;
+import com.demo.Controller.PrintUtility;
 
 import java.util.Set;
 
@@ -54,6 +54,17 @@ public class InventoryService {
         }
     }
 
+    public boolean updateSellPriceInventory(String itemName, String newSellPrice) {
+        Inventory inv =repo.getInventoryByName(itemName);
+        double sellPrice = convertToDouble(newSellPrice);
+        if(inv==null)
+            return false;
+        else
+            inv.setSellingPrice(sellPrice);
+            repo.updateInventory(inv);
+        return true;
+    }
+
     private double convertToDouble(String num){
         double d=0;
         if(num!=null) {
@@ -92,4 +103,6 @@ public class InventoryService {
         }
         return i;
     }
+
+
 }

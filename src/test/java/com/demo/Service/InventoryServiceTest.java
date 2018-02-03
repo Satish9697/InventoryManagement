@@ -60,7 +60,7 @@ public class InventoryServiceTest {
     @Test
     public void updateSellInventoryNoQuantityTest(){
         inventoryService.addInventory("laptop2","12","3");
-        boolean result=inventoryService.updateSellInventory("laptop2","4");
+        boolean result=inventoryService.updateSellInventory("laptop2","3");
         Assert.assertFalse(result);
 
     }
